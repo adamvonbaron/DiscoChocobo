@@ -5,7 +5,7 @@ using Discord.WebSocket;
 
 namespace DiscoChocobo.Commands
 {
-    public class UserInfo : ModuleBase<SocketCommandContext>
+    public class UserInfo : DiscoChocoboCommandBase
     {
         [Command("userInfo")]
         [Summary
@@ -13,7 +13,9 @@ namespace DiscoChocobo.Commands
         [Alias("user", "whois")]
         public async Task UserInfoAsync([Summary("optional user param")] SocketUser user = null)
         {
-            var userInfo = user ?? Context.Client.CurrentUser;
+            SocketUser userInfo;
+            
+            userInfo = user ?? Context.Client.CurrentUser;
             await ReplyAsync($"{userInfo.Username}#{userInfo.Discriminator}");
         }
     }
