@@ -20,7 +20,7 @@ namespace DiscoChocobo.Commands
             Uri uri;
             bool createResult;
 
-            createResult = Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out uri);
+            createResult = Uri.TryCreate(url, UriKind.Absolute, out uri);
 
             if (createResult && Uri.IsWellFormedUriString(url, UriKind.Absolute))
                 return (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
